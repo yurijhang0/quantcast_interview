@@ -14,8 +14,9 @@ def main():
         date = sys.argv[3]
         parseCookie = cookieFileParser.CookieFileParser(filename, date)
         parseCookie.readCookieFile()
-        print(parseCookie.getMostActiveCookie())
-        return parseCookie.getMostActiveCookie()
+        cookies_list = parseCookie.getMostActiveCookie()
+        for cookie in cookies_list:
+            sys.stdout.write(cookie + "\n")
     except: # raises exception if command does not contain all specified arguments
         raise SystemExit(f"Make sure to run the command like so:\npython most_active_cookie.py <cookie_log.csv> -d <date (year-month-day)>")
 

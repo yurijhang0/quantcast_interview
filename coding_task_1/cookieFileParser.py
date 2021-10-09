@@ -42,5 +42,14 @@ class CookieFileParser:
     """
     def getMostActiveCookie(self):
         # return cookie key with max counter
-        return max(self.trackerDict, key = self.trackerDict.get)
+        #return max(self.trackerDict, key = self.trackerDict.get)
+        max_counter = 0
+        max_cookie = []
+        for cookie, counter in self.trackerDict.items():
+            if counter == max_counter:  # append if curr max counter
+                max_cookie.append(cookie)
+            elif counter > max_counter: # reset to empty list if new max counter is found
+                max_counter = counter
+                max_cookie = [cookie]
+        return max_cookie
             
